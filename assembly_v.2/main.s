@@ -121,7 +121,7 @@ main:
 .L7:
 	mov	eax, DWORD PTR -52[rbp]			#eax=a_size
 	cmp	r14d, eax				#compare i and a_size
-	jl	.L8					#if i<size_a => input next elem of A
+	jl	.L8					#if i<a_size => input next elem of A
 	jmp	.L9	
 .L3:
 	mov	rax, QWORD PTR -80[rbp]			#rax=argv[0]
