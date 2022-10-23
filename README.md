@@ -29,7 +29,8 @@ main.s:
 8. -40[rbp] = time_spent
 9. -48[rbp] = output
 
-createArrayB.s:1. -20[rbp] = a_size
+createArrayB.s:
+1. -20[rbp] = a_size
 2. -8[rbp] = k
 3. -12[rbp] = sum
 4. -4[rbp] = i_A (в программе i_A лежит в r14d)
