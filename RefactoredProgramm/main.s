@@ -87,8 +87,8 @@ main:
 	call	puts@PLT				#print .LC2
 	jmp	.L5
 .L4:
-	mov	eax, DWORD PTR -52[rbp]			#eax=size_a
-	cmp	eax, 50					#compare size_a and 50
+	mov	eax, DWORD PTR -52[rbp]			#eax=a_size
+	cmp	eax, 50					#compare a_size and 50
 	jle	.L5					#if a_size<=50 => gor to .L5
 	mov	esi, 50					#esi=50
 	lea	rdi, .LC3[rip]				#rdi=&(.LC3)
