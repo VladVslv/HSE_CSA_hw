@@ -76,7 +76,7 @@ main:
 	lea	rdi, .LC0[rip]				#rdi=&(.LC0)
 	mov	eax, 0					#zeroing eax
 	call	printf@PLT				#print .LC0
-	lea	rsi, -52[rbp]				#rsi=&(size_a)
+	lea	rsi, -52[rbp]				#rsi=&(a_size)
 	lea	rdi, .LC1[rip]				#rdi=&(.LC1)
 	mov	eax, 0					#zeroing eax	
 	call	__isoc99_scanf@PLT
@@ -97,10 +97,10 @@ main:
 .L5:
 	mov	eax, DWORD PTR -52[rbp]
 	test	eax, eax
-	jle	.L6					#if size_a<=0 => input a_size again
+	jle	.L6					#if a_size<=0 => input a_size again
 	mov	eax, DWORD PTR -52[rbp]
 	cmp	eax, 50
-	jg	.L6					#if size_a>50 => input a_size again
+	jg	.L6					#if a_size>50 => input a_size again
 	mov	r14d, 0					#i=0
 	jmp	.L7
 .L8:							#input A[i] from console
@@ -151,13 +151,13 @@ main:
 .L11:
 	mov	eax, DWORD PTR -52[rbp]			
 	cmp	eax, 50					#compare a_size and 5
-	jle	.L13					#size_a<=50 => right input
+	jle	.L13					#a_size<=50 => right input
 	mov	esi, 50
 	lea	rdi, .LC8[rip]
 	mov	eax, 0
-	call	printf@PLT				#if size >50 => incorrect input => return 1
+	call	printf@PLT				#if a_size >50 => incorrect input
 	mov	eax, 1
-	jmp	.L23
+	jmp	.L23					#incorrect input => return 1
 .L13:
 	mov	r14d, 0					#i=0
 	jmp	.L14
