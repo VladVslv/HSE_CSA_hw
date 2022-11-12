@@ -20,7 +20,7 @@
 main.s:
 1. -68[pbp] = argc
 2. -80[rbp] = argv[0]
-3  -72[rbp] = argv[1]
+3.  -72[rbp] = argv[1]
 4. -24[rbp] = temp_int
 5. -4[rbp] = i (в программе i лежит в r13d)
 6. -16[rbp] = input
