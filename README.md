@@ -38,3 +38,4 @@ getResult.s:
 Врзвращение результата функции mygetch производится через регистр eax.
 # Опции компиляции
 gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-protector -fno-exceptions ./main.c -S -o ./main.s
+gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-protector -fno-exceptions ./getResult.c -S -o ./getResult.s
