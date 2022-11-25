@@ -8,9 +8,9 @@
 2. ./prog.out input_name output_name- считывание числа из файла c именем input_name, дальнейшая запись в файл с именем output_name.
 3. ./prog.out output_name - случайная генерация строк, дальнейшая запись в файл с именем output_name.
 
-Рeзультаты тестов для программы без рефакторинга (assembly_v1), с рефакторингом (assembly_v2), с исползованием опций оптимизации по размеру (assembly_memory_optimization) и скорости (assembly_memory_optimization) можно посмотреть в папке tests.
+Рeзультаты тестов для программы без рефакторинга (assembly_v1), с рефакторингом (assembly_v2), с использованием опций оптимизации по размеру (assembly_memory_optimization) и скорости (assembly_memory_optimization) можно посмотреть в папке tests.
 # Рефакторинг кода.
-1. Исправление строк кода, когда сначала данные кладут в rax, а потом в другой регистр. Вместо этогосразу кладётся в конечный регистр.
+1. Исправление строк кода, когда сначала данные кладут в rax, а потом в другой регистр. Вместо этого сразу кладётся в конечный регистр.
 2. В main.s i было положено к r13d, вместо -4[rbp].
 3. В getResult.s j было положено к r14d, вместо -4[rbp].
 4. Удаление ненужных строк в конце файла.
@@ -36,8 +36,14 @@ arcsin.s:
 4.  -8[rbp] = res (в конечной программе лежит в xmm6)
 # Передача параметров в функцию.
 Передача параметров в функцию arcsin производится ерез регистр xmm0.
+
 Возвращение результата функции arcsin производится через регистр xmm0.
 # Опции компиляции
+Стандартная компиляция:
 gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-protector -fno-exceptions ./main.c -S -o ./main.s
 
-gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-protector -fno-exceptions ./getResult.c -S -o ./getResult.s
+Компиляция с использованием опций оптимизации размера:
+gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-protector -fno-exceptions -ffunction-sections -Wl,--gc-sections -Os -ffunction-sections -Wl,--gc-sections -fno-asynchronous-unwind-tables -ffunction-sections -Wl,--gc-sections -fno-asynchronous-unwind-tables -Wl,--strip-all ./main.c -S -o ./main.s
+
+Компиляция с использованием опций оптимизации скорости:
+gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-protector -fno-exceptions -m64 -Ofast -flto -march=native -funroll-loops ./main.c -S -o ./main.s
