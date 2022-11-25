@@ -40,6 +40,7 @@ arcsin.s:
 Возвращение результата функции arcsin производится через регистр xmm0.
 # Опции компиляции
 Стандартная компиляция:
+
 gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-protector -fno-exceptions ./main.c -S -o ./main.s
 
 Компиляция с использованием опций оптимизации размера (привела к уменьшению размера файлов примерно в 1.5 раза):
