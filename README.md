@@ -46,6 +46,6 @@ gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-prot
 
 gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-protector -fno-exceptions -ffunction-sections -Wl,--gc-sections -Os -ffunction-sections -Wl,--gc-sections -fno-asynchronous-unwind-tables -ffunction-sections -Wl,--gc-sections -fno-asynchronous-unwind-tables -Wl,--strip-all ./main.c -S -o ./main.s
 
-Компиляция с использованием опций оптимизации скорости (привела к увеличению скорости программы примерно в 2 раза):
+Компиляция с использованием опций оптимизации скорости (привела к увеличению скорости программы примерно в 2.5 раз):
 
 gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-protector -fno-exceptions -m64 -Ofast -flto -march=native -funroll-loops ./main.c -S -o ./main.s
