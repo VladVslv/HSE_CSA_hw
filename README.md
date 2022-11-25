@@ -36,7 +36,6 @@ arcsin.s:
 4.  -8[rbp] = res (в конечной программе лежит в xmm6)
 # Передача параметров в функцию.
 Передача параметров в функцию arcsin производится ерез регистр xmm0.
-
 Возвращение результата функции arcsin производится через регистр xmm0.
 # Опции компиляции
 gcc -masm=intel -fno-asynchronous-unwind-tables -fno-jump-tables -fno-stack-protector -fno-exceptions ./main.c -S -o ./main.s
